@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div id="app">
+    <button aria-label="Adicionar nível fácil" type="button" data-value="facil" onclick="preferenceValue(this)">
+      Fácil
+    </button>
+
+    <button aria-label="Adicionar nível padrão" type="button" data-value="padrao" onclick="preferenceValue(this)">
+      Padrão
+    </button>
+
+    <button aria-label="Adicionar nível dificil" type="button" data-value="dificil" onclick="preferenceValue(this)">
+      Dificil
+    </button>
+
+    <button aria-label="Iniciar jogo" onclick="getPreference()">Jogar</button>
+  </div>
+
+  <script>
+    let dataTestValue = '';
+
+    function preferenceValue(elemento) {
+      dataTestValue = elemento.getAttribute('data-value');
+    }
+
+    function getPreference() {
+      if (dataTestValue) {
+        console.log('Você clicou no botão após selecionar:', dataTestValue);
+        alert('Valor do data-value selecionado: ' + dataTestValue);
+      } else {
+        console.log('Nenhum valor foi selecionado.');
+        alert('Por favor, clique em um elemento antes de apertar o botão.');
+      }
+    }
+  </script>
+</body>
+
+</html>

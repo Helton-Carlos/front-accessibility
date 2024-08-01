@@ -6,13 +6,11 @@ document
   .addEventListener('submit', function (event) {
     let isValid = true;
 
-    // Limpa mensagens de erro anteriores
     const emailHelp = document.getElementById('emailHelp');
     const passwordHelp = document.getElementById('passwordHelp');
     emailHelp.textContent = '';
     passwordHelp.textContent = '';
 
-    // Validação do campo de e-mail
     const email = document.getElementById('email');
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailPattern.test(email.value)) {
@@ -24,7 +22,6 @@ document
       email.setAttribute('aria-invalid', 'false');
     }
 
-    // Validação do campo de senha
     const password = document.getElementById('password');
     if (password.value.length < 8) {
       passwordHelp.textContent = 'A senha deve ter pelo menos 8 caracteres.';
