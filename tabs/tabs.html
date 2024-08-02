@@ -4,8 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tabs - Acessibilidade</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  
+  <div class="container">
+    <h1>Tabela Acessível</h1>
+      <table>
+        <caption>Lista de Produtos</caption>
+        <thead>
+            <tr>
+              <th scope="col" role="ID" aria-controls="tab-content-1">ID</th>
+              <th scope="col" role="Nome" aria-controls="tab-content-2">Nome</th>
+              <th scope="col" role="Preço" aria-controls="tab-content-3">Preço</th>
+              <th scope="col" role="Quantidade" aria-controls="tab-content-4">Quantidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td id="tab-content-1">1</td>
+              <td id="tab-content-2">Produto A</td>
+              <td id="tab-content-3">R$ 10,00</td>
+              <td id="tab-content-4">25</td>
+            </tr>
+        </tbody>
+      </table>
+  </div>
 </body>
 </html>
