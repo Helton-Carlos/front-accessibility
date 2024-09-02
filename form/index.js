@@ -1,4 +1,3 @@
-// Import stylesheets
 import './index.css';
 
 document
