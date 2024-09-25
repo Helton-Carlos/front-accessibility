@@ -1,37 +1,42 @@
-import './index.css';
+document.addEventListener('DOMContentLoaded', () => {
+  const loginForm = document.getElementById('loginForm');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
 
-document
-  .getElementById('loginForm')
-  .addEventListener('submit', function (event) {
-    let isValid = true;
+  loginForm.addEventListener('submit', (event) => {
+    let valid = true;
 
-    const emailHelp = document.getElementById('emailHelp');
-    const passwordHelp = document.getElementById('passwordHelp');
-    emailHelp.textContent = '';
-    passwordHelp.textContent = '';
+    clearErrors();
 
-    const email = document.getElementById('email');
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!emailPattern.test(email.value)) {
-      emailHelp.textContent = 'Por favor, insira um e-mail válido.';
-      emailHelp.classList.remove('visually-hidden');
-      email.setAttribute('aria-invalid', 'true');
-      isValid = false;
-    } else {
-      email.setAttribute('aria-invalid', 'false');
+    if (!validateEmail(emailInput.value)) {
+      showError(emailInput, "Por favor, insira um e-mail válido.");
+      valid = false;
     }
 
-    const password = document.getElementById('password');
-    if (password.value.length < 8) {
-      passwordHelp.textContent = 'A senha deve ter pelo menos 8 caracteres.';
-      passwordHelp.classList.remove('visually-hidden');
-      password.setAttribute('aria-invalid', 'true');
-      isValid = false;
-    } else {
-      password.setAttribute('aria-invalid', 'false');
+    if (passwordInput.value.length < 8) {
+      showError(passwordInput, "A senha deve ter pelo menos 8 caracteres.");
+      valid = false;
     }
 
-    if (!isValid) {
+    if (!valid) {
       event.preventDefault();
     }
   });
+
+  function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+  }
+
+  function showError(input, message) {
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.textContent = message;
+    input.parentNode.insertBefore(errorDiv, input.nextSibling);
+  }
+
+  function clearErrors() {
+    const errorMessages = document.querySelectorAll('.error-message');
+    errorMessages.forEach((msg) => msg.remove());
+  }
+});

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acessibilidade</title>
+</head>
+
+<body>
+  <div class="flex">
+    <div class="card">
+      <h2>Exemplos - Role</h2>
+
+      <strong>não faça:</strong>
+      <xmp>
+        <p role="alert">Mensagem de alerta</p>
+      </xmp>
+
+      <strong>faça:</strong>
+      <xmp>
+        <div role="alert">
+          <p>Mensagem de alerta</p>
+        </div>
+      </xmp>
+    </div>
+
+    <div class="card">
+      <h2>Exemplos - States</h2>
+
+      <div>
+        <img src="./print.png" onclick="alert"/>
+      </div>
+
+      <strong>não faça:</strong>
+      <xmp>
+        <img src="./print.png" />
+      </xmp>
+
+      <strong>faça:</strong>
+      <xmp>
+        <img 
+          src="./print.png" 
+          alt=""
+           aria-hidden="true"
+        />
+      </xmp>
+    </div>
+
+    <div class="card">
+      <h2>Exemplos - Properties</h2>
+
+      <button id="myBtn">open modal</button>
+
+      <div id="myModal" class="modal" aria-hidden="true">
+        <div class="modal-content">
+          <button aria-label="fechar" class="close">&times;</button>
+         
+          <xmp>
+            <button aria-label="fechar">
+          </xmp>
+        </div> 
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Exemplos - Properties</h2>
+
+      <xmp>
+        <div 
+          aria-live="assertive" 
+          aria-atomic="true"
+        >
+          <p>
+            O upload concluído com sucesso.
+          </p>
+        </div>
+      </xmp>
+    </div>
+  </div>
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #aaa;
+    }
+
+    .flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      width: calc(100% / 3 - 60px);
+      padding: 20px;
+      box-shadow: 2px 2px 16px 0px rgba(0, 0, 0, 0.1);
+      border-radius: 15px;
+      background-color: white;
+    }
+
+    .card:hover {
+      transition: all 0.5s ease;
+      box-shadow: 2px 2px 16px 0px rgba(0, 0, 0, 0.8);
+    }
+
+    #myBtn {
+      width: 80%;
+      background-color: #019cad;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all linear 160ms;
+      cursor: pointer;
+      text-transform: capitalize;
+      padding: 20px;
+      border: none !important;
+      margin: 70px auto;
+    }
+
+    #myBtn:hover {
+      transform: scale(1.05);
+      background-color: #005861;
+    }
+
+
+    .modal {
+      display: none; 
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    img {
+      width: 50px;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+  </style>
+
+  <script>
+    const modal = document.getElementById("myModal");
+
+    const btn = document.getElementById("myBtn");
+    const closed = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+
+    closed.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    const btnPrint = document.getElementsByTagName("img")[0];
+
+    btnPrint.onclick = function() {
+      alert("Imprimir")
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
