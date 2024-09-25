@@ -7,83 +7,156 @@
 </head>
 
 <body>
-  <div class="flex">
-    <div class="card">
-      <h2>Exemplos - Role</h2>
+  <input type="radio" class="slide-controller" name="slide" checked />
+  <input type="radio" class="slide-controller" name="slide" />
+  <input type="radio" class="slide-controller" name="slide" />
+  <input type="radio" class="slide-controller" name="slide" />
+  <input type="radio" class="slide-controller" name="slide" />
 
-      <strong>não faça:</strong>
-      <xmp>
-        <p role="alert">Mensagem de alerta</p>
-      </xmp>
+  <div class="slide-show" >
+    <div class="slides-list" >
+      <div class="card slide">
+        <h2>Exemplos - Role</h2>
 
-      <strong>faça:</strong>
-      <xmp>
-        <div role="alert">
-          <p>Mensagem de alerta</p>
+        <div style="margin: 20px 0 50px;">
+          <a href="https://mwpt.com.br/" target="_blank" class="myBtn">mwpt</a>
         </div>
-      </xmp>
-    </div>
-
-    <div class="card">
-      <h2>Exemplos - States</h2>
-
-      <div>
-        <img src="./print.png" onclick="alert"/>
+  
+        <strong>não faça:</strong>
+        <xmp>
+          <a 
+            href="https://mwpt.com.br/" 
+            target="_blank"
+          >
+            mwpt
+          </a>
+        </xmp>
+  
+        <strong>faça:</strong>
+        <xmp>
+          <div role="button">
+            <a 
+              href="https://mwpt.com.br/" 
+              target="_blank"
+            >
+              mwpt
+            </a>
+          </div>
+        </xmp>
       </div>
 
-      <strong>não faça:</strong>
-      <xmp>
-        <img src="./print.png" />
-      </xmp>
-
-      <strong>faça:</strong>
-      <xmp>
-        <img 
-          src="./print.png" 
-          alt=""
-           aria-hidden="true"
-        />
-      </xmp>
-    </div>
-
-    <div class="card">
-      <h2>Exemplos - Properties</h2>
-
-      <button id="myBtn">open modal</button>
-
-      <div id="myModal" class="modal" aria-hidden="true">
-        <div class="modal-content">
-          <button aria-label="fechar" class="close">&times;</button>
-         
-          <xmp>
-            <button aria-label="fechar">
-          </xmp>
-        </div> 
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>Exemplos - Properties</h2>
-
-      <xmp>
-        <div 
-          aria-live="assertive" 
-          aria-atomic="true"
-        >
-          <p>
-            O upload concluído com sucesso.
-          </p>
+      <div class="card slide">
+        <h2>Exemplos - States</h2>
+  
+        <div>
+          <img src="./circulo.png"/>
         </div>
-      </xmp>
+  
+        <strong>não faça:</strong>
+        <xmp>
+          <img src="./circulo.png" />
+        </xmp>
+  
+        <strong>faça:</strong>
+        <xmp>
+          <img 
+            src="./circulo.png" 
+            alt="circulo"
+            aria-hidden="true"
+          />
+        </xmp>
+      </div>
+  
+      <div class="card slide">
+        <h2>Exemplos - Properties</h2>
+  
+        <button id="myBtn">open modal</button>
+  
+        <div id="myModal" class="modal" aria-hidden="true">
+          <div class="modal-content">
+            <button aria-label="fechar" class="close">&times;</button>
+           
+            <xmp>
+              <button aria-label="fechar">
+            </xmp>
+          </div> 
+        </div>
+      </div>
+  
+      <div class="card slide">
+        <h2>Exemplos - Live Regions</h2>
+  
+        <xmp>
+          <div 
+            aria-live="assertive" 
+            aria-atomic="true"
+          >
+            <p>
+              O upload concluído com sucesso.
+            </p>
+          </div>
+        </xmp>
+      </div>
+
+      <div class="card slide">
+        <h2>Exemplos - Geral</h2>
+  
+        <div>
+          <img src="./print.png" onclick="alert"/>
+        </div>
+  
+        <strong>não faça:</strong>
+        <xmp>
+          <img src="./print.png" />
+        </xmp>
+  
+        <strong>faça:</strong>
+        <xmp>
+          <img 
+            src="./print.png" 
+            alt="imprimir"
+            aria-label="imprimir"
+          />
+        </xmp>
+      </div>
     </div>
   </div>
 
   <style>
+    .slide-controller:nth-child(1):checked ~ .slide-show .slides-list{--selected-item: 0;}
+    .slide-controller:nth-child(2):checked ~ .slide-show .slides-list{--selected-item: 1;}
+    .slide-controller:nth-child(3):checked ~ .slide-show .slides-list{--selected-item: 2;}
+    .slide-controller:nth-child(4):checked ~ .slide-show .slides-list{--selected-item: 3;}
+    .slide-controller:nth-child(5):checked ~ .slide-show .slides-list{--selected-item: 4;}
+
+    .slide-show{
+      overflow: hidden;
+  
+    }
+
+    .slides-list{
+      --selected-item: 0;
+      --total-items: 5;
+      list-style-type: none;
+      margin: 10px 0;
+      padding: 0;
+      position: relative;
+      left: calc(var(--selected-item) * -100%);
+      width: calc(var(--total-items) * 100%);
+      transition: left 0.4s cubic-bezier(0.680, -0.550, 0.265, 1.550);
+      
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 1fr;
+    }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
       padding: 0;
       box-sizing: border-box;
       background-color: #aaa;
+      text-align: center;
+      margin: 20px auto;
     }
 
     .flex {
@@ -93,6 +166,7 @@
     }
 
     .card {
+      margin: 20px auto;
       display: flex;
       flex-direction: column;
       text-align: left;
@@ -108,7 +182,7 @@
       box-shadow: 2px 2px 16px 0px rgba(0, 0, 0, 0.8);
     }
 
-    #myBtn {
+    #myBtn, .myBtn {
       width: 80%;
       background-color: #019cad;
       color: #fff;
@@ -122,11 +196,10 @@
       margin: 70px auto;
     }
 
-    #myBtn:hover {
+    #myBtn:hover, .myBtn:hover {
       transform: scale(1.05);
       background-color: #005861;
     }
-
 
     .modal {
       display: none; 
@@ -163,7 +236,7 @@
     }
 
     img {
-      width: 50px;
+      width: 80px;
       margin-bottom: 20px;
       cursor: pointer;
     }
@@ -183,7 +256,7 @@
       modal.style.display = "none";
     }
 
-    const btnPrint = document.getElementsByTagName("img")[0];
+    const btnPrint = document.getElementsByTagName("img")[1];
 
     btnPrint.onclick = function() {
       alert("Imprimir")
