@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="flex-col">
+    <label for="dia">Adicione o dia do seu nascimento*</label>
+    <input id="dia" type="number" placeholder="20" />
+
+    <label for="mes">Adicione o mês do seu nascimento*</label>
+    <input id="mes" type="text" placeholder="setembro" />
+
+    <label for="ano">Adicione o ano do seu nascimento*</label>
+    <input id="ano" type="number" placeholder="1990" />
+  </div>
+
+  <xmp>
+    <label for="dia">Adicione o dia do seu nascimento*</label>
+    <input id="dia" type="number" placeholder="20" />
+
+    <label for="mes">Adicione o mês do seu nascimento*</label>
+    <input id="mes" type="text" placeholder="setembro" />
+
+    <label for="ano">Adicione o ano do seu nascimento*</label>
+    <input id="ano" type="number" placeholder="1990" />
+  </xmp>
+</body>
+
+<style>
+  .flex-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  input {
+    width: 250px;
+    padding: 15px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    border-radius: 4px;
+    transition: all linear 160ms;
+    outline: none;
+  }
+
+  input:focus {
+    border: 2px solid #7987de;
+  }
+</style>
+</html>

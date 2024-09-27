@@ -19,27 +19,28 @@
         <h2>Exemplos - Role</h2>
 
         <div style="margin: 20px 0 50px;">
-          <a href="https://mwpt.com.br/" target="_blank" class="myBtn">mwpt</a>
+          <a href="#" class="myBtn">imprimir</a>
         </div>
   
         <strong>não faça:</strong>
         <xmp>
           <a 
-            href="https://mwpt.com.br/" 
-            target="_blank"
+            href="#" 
+            class="myBtn"
           >
-            mwpt
+           imprimir
           </a>
         </xmp>
   
         <strong>faça:</strong>
+        
         <xmp>
-          <div role="button">
+          <div role="button" >
             <a 
-              href="https://mwpt.com.br/" 
-              target="_blank"
+              href="#" 
+              class="myBtn"
             >
-              mwpt
+              imprimir
             </a>
           </div>
         </xmp>
@@ -112,11 +113,13 @@
   
         <strong>faça:</strong>
         <xmp>
-          <img 
-            src="./print.png" 
-            alt="imprimir"
-            aria-label="imprimir"
-          />
+          <div role="button">
+            <img 
+              src="./print.png" 
+              alt="imprimir"
+              aria-label="imprimir"
+            />
+          </div>
         </xmp>
       </div>
     </div>
@@ -133,7 +136,9 @@
       overflow: hidden;
   
     }
-
+    
+    a{ text-decoration: none;}
+    
     .slides-list{
       --selected-item: 0;
       --total-items: 5;
